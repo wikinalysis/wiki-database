@@ -35,3 +35,7 @@ CREATE TABLE contributors
   anonymous_user BOOLEAN NOT NULL
 );
 
+ALTER TABLE pages ADD PRIMARY KEY(wiki_id, wiki_language);
+ALTER TABLE revisions ADD PRIMARY KEY(wiki_id, wiki_language);
+ALTER TABLE texts ADD PRIMARY KEY(revision_id, wiki_language);
+
