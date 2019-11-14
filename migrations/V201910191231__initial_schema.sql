@@ -1,41 +1,34 @@
 CREATE TABLE pages
 (
+  id VARCHAR(50) NOT NULL,
   wiki_id INT NOT NULL,
   wiki_language VARCHAR(50) NOT NULL,
   title VARCHAR(255) NOT NULL,
   revision_count INT NOT NULL,
   latest_id INT NOT NULL,
-  first_id INT NOT NULL
+  first_id INT NOT NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE revisions
 (
+  id VARCHAR(50) NOT NULL,
   wiki_id INT NOT NULL,
   page_id INT NOT NULL,
   wiki_language VARCHAR(50) NOT NULL,
   sha1 VARCHAR(255) NOT NULL,
   created_at VARCHAR(255) NOT NULL,
   text_length INT NOT NULL,
-  has_text BOOLEAN NOT NULL
+  has_text BOOLEAN NOT NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE texts
 (
+  id VARCHAR(50) NOT NULL,
   revision_id INT NOT NULL,
   page_id INT NOT NULL,
   wiki_language VARCHAR(50) NOT NULL,
-  raw_text VARCHAR(255) NOT NULL
+  raw_text VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
 );
-
-CREATE TABLE contributors
-(
-  wiki_id INT NOT NULL,
-  ip_addr VARCHAR(255),
-  username VARCHAR(255),
-  anonymous_user BOOLEAN NOT NULL
-);
-
-ALTER TABLE pages ADD PRIMARY KEY(wiki_id, wiki_language);
-ALTER TABLE revisions ADD PRIMARY KEY(wiki_id, wiki_language);
-ALTER TABLE texts ADD PRIMARY KEY(revision_id, wiki_language);
-
