@@ -1,0 +1,1 @@
+CREATE VIEW `current_wikis` AS SELECT w.* FROM languages l LEFT JOIN wikis w ON l.id = w.id;;
